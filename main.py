@@ -1,58 +1,79 @@
-# bot.py
 import os
-import random
 
 import discord
-from discord.ext import commands
 from dotenv import load_dotenv
+import asyncio
+import datetime
 
 from keep_alive import keep_alive
+from get_prompt import get_prompt
+
+
+def round_time(dt=None, round_to=60):
+    """Round a datetime object to any time-lapse in seconds
+   dt : datetime.datetime object, default now.
+   roundTo : Closest number of seconds to round to, default 1 minute.
+   Author: Thierry Husson 2012 - Use it as you want but don't blame me.
+   """
+    if dt is None:
+        dt = datetime.datetime.now()
+    seconds = (dt.replace(tzinfo=None) - dt.min).seconds
+    rounding = (seconds + round_to / 2) // round_to * round_to
+    return dt + datetime.timedelta(0, rounding - seconds, -dt.microsecond)
+
+
 
 load_dotenv()
+
 TOKEN = os.environ['TOKEN']
-bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
+channel_id = os.environ['CHANNEL_ID']
+user_id = os.environ['USER_ID']
+
+client = discord.Client(intents=discord.Intents.all())
 
 
-@bot.command(name='99', help='Responds with a random quote from Brooklyn 99')
-async def nine_nine(ctx):
-    brooklyn_99_quotes = [
-        'I\'m the human form of the 💯 emoji.',
-        'Bingpot!',
-        (
-            'Cool. Cool cool cool cool cool cool cool, '
-            'no doubt no doubt no doubt no doubt.'
-        ),
-    ]
+async def send_daily_message():
+  while not client.is_closed():
+    current_time = datetime.datetime.utcnow()
 
-    response = random.choice(brooklyn_99_quotes)
-    await ctx.send(response)
+    # Round the current time to the nearest minute
+    rounded_time = round_time(current_time)
 
+    # Get a date object for today's date
+    today = datetime.date.today()
 
-@bot.command(name='roll_dice', help='Simulates rolling dice.')
-async def roll(ctx, number_of_dice: int, number_of_sides: int):
-    dice = [
-        str(random.choice(range(1, number_of_sides + 1)))
-        for _ in range(number_of_dice)
-    ]
-    await ctx.send(', '.join(dice))
+    # Get a time object for the current hour and minute
+    # Replace this with your desired time
+    msg_time = datetime.time(hour=18, minute=34)
 
+    # Combine the date and time objects into a single datetime object
+    message_time = datetime.datetime.combine(today, msg_time)
 
-@bot.command(name='create-channel')
-@commands.has_role('admin')
-async def create_channel(ctx, channel_name='real-python'):
-    guild = ctx.guild
-    existing_channel = discord.utils.get(guild.channels, name=channel_name)
-    if not existing_channel:
-        print(f'Creating a new channel: {channel_name}')
-        await guild.create_text_channel(channel_name)
+    print(rounded_time)
+    print(message_time)
+    print(rounded_time == message_time)
 
+    if rounded_time == message_time:
+      prompt = get_prompt().rstrip()
 
-@bot.event
-async def on_command_error(ctx, error):
-    if isinstance(error, commands.errors.CheckFailure):
-        await ctx.send('You do not have the correct role for this command.')
+      if prompt == "end":
+        # Fetch the user by their user id
+        user = await client.fetch_user(user_id)
+        # Send the message to the user
+        await user.send("Prompts are empty, prolly should update that bro. Also send it manually today or not up to you lel.")
+      else:
+        # Replace "channel_id" with the ID of the channel you want to send the message to
+        channel = await client.fetch_channel(channel_id)
+        await channel.send(f"@everyone Today's drawing challenge is to draw Spook or one of the other voidlings as {prompt}. Good luck")
+
+    await asyncio.sleep(60)  # Check the current time every minute
 
 
-#uptime robot used to keep_alive
+async def main():
+  await client.login(TOKEN)
+  print("Discord client started")
+  await send_daily_message()
+
+
+asyncio.run(main())
 keep_alive()
-bot.run(TOKEN)

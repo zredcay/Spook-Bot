@@ -90,6 +90,14 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
+name = "datadispatch"
+version = "1.0.0"
+description = "Like functools.singledispatch but for values"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "debugpy"
 version = "1.6.3"
 description = "An implementation of the Debug Adapter Protocol for Python"
@@ -416,6 +424,17 @@ doc = ["sphinx-rtd-theme (>=1.0.0)", "sphinx-autodoc-typehints (>=1.18.1)", "sph
 dev = ["build (>=0.7.0)", "pytest-timeout (>=2.1.0)", "pytest (>=7.0.1)"]
 
 [[package]]
+name = "tasks"
+version = "2.8.0"
+description = "A simple personal task queue to track todo items"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+datadispatch = "*"
+
+[[package]]
 name = "toml"
 version = "0.10.2"
 description = "Python Library for Tom's Obvious, Minimal Language"
@@ -517,7 +536,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "flake8 
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8.0,<3.9"
-content-hash = "523ae5374541e71bd17d83b8a80c4b9861bb6e4752b16e04ff3ee2068ac41f90"
+content-hash = "ecc341620c4f869cdc3f42c5532451d24538cfd6ae503bd015d48fa1e8d67c8e"
 
 [metadata.files]
 aiohttp = []
@@ -528,6 +547,7 @@ certifi = []
 charset-normalizer = []
 click = []
 colorama = []
+datadispatch = []
 debugpy = []
 discord = []
 "discord.py" = []
@@ -553,6 +573,7 @@ replit = []
 replit-python-lsp-server = []
 requests = []
 rope = []
+tasks = []
 toml = []
 tomli = []
 typing-extensions = []
