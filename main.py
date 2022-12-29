@@ -44,7 +44,7 @@ async def send_daily_message():
 
     # Get a time object for the current hour and minute
     # Replace this with your desired time
-    msg_time = datetime.time(hour=18, minute=34)
+    msg_time = datetime.time(hour=7, minute=0)
 
     # Combine the date and time objects into a single datetime object
     message_time = datetime.datetime.combine(today, msg_time)
