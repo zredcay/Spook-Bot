@@ -18,8 +18,8 @@ def round_time(dt=None, round_to=3600):
   if dt is None:
     dt = datetime.datetime.now()
   seconds = (dt.replace(tzinfo=None) - dt.min).seconds
-  rounding = (seconds + round_to / 2) // round_to * round_to
-  return dt + datetime.timedelta(0, rounding - seconds, -dt.microsecond)
+  rounding = seconds // round_to * round_to
+  return dt.replace(microsecond=0) - datetime.timedelta(seconds=seconds) + datetime.timedelta(seconds=rounding)
 
 
 load_dotenv()
