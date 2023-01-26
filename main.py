@@ -59,8 +59,9 @@ async def send_daily_message():
     print(rounded_time)
     print(message_time)
     print(reset_time)
-    print(rounded_time == message_time)
-    print(rounded_time == reset_time)
+    print(rounded_time == message_time and not locked)
+    print(rounded_time == reset_time and locked)
+    print(locked)
 
     if rounded_time == message_time and not locked:
       locked = True
