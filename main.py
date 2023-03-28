@@ -78,7 +78,7 @@ async def send_daily_message():
         # Replace "channel_id" with the ID of the channel you want to send the message to
         channel = await client.fetch_channel(channel_id)
         await channel.send(
-          f"@everyone Today's drawing challenge is to draw Spook or one of the other voidlings as {prompt}. Good luck"
+          f"Everyone Today's drawing challenge is to draw Spook or one of the other voidlings as {prompt}. Good luck"
         )
 
     if rounded_time == reset_time and locked:
