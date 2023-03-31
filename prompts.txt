@@ -1,6 +1,3 @@
-an ac130
-an Island Boy
-a synth from Fallout
 Vandal
 Ernest scared straight
 Fall guys participant
@@ -618,4 +615,82 @@ Pico
 a combination of your favorite voidlings
 Wolverine
 Smash Bros Fighting Mario
+Ufo
+On Top Of A Building
+Fall Guy
+Cappy (Mario Oddesy)
+Stonks
+Borzoi
+Mike Wazouski
+Paul McCartney
+Mirage
+Subnautica
+Hanging With A Bone Dog
+Chamelion
+Brick Wall
+UltraKill
+Door
+Jevil (Deltarune)
+Gas Stove
+Big Chungus
+Quandel Dingle
+Oscar The Grouch
+BioSchock
+Typhon Anthrophantasomus
+Hippo
+Ghost Recon Glasses & A Military Helmet
+Gloomy Bear Onesie
+Kakshi With A Lightsaber
+Tokyo Ghoul
+Psycho Bandit (Borderlands)
+Four BFB
+John Kozak
+Purple Wubbox
+Chilling With A Duck
+Light Bulb
+Usopp
+Puppet
+Fork Knight
+Cheese Glob
+Fixing My Life
+Atomic Heart
+Vortigaunt (Half Life)
+Hoop Earrings Long Nails Fancy Hair
+With An Aggressive Middle Finger
+In A Monster Can
+Umizoomi Kid
+Castle Crashers
+Red Hood
+Kenny McCormick
+Leprechaun
+Baney Calhouns
+Jimmy Newtron
+Getting A Job
+Beavis
+Mystery Machine
+Tall Sandwich
+Negan
+Cult Of The Lamb
+Riding A Ghost Horse
+Fishbowl
+Rex Salazar
+Mandela Catalog
+Coffee Grounds
+Youmu Konpaku (Touhou Franchise)
+Something Not Quite Right (Skin Walker Vibes)
+Eneru (One Piece)
+Gurren Lagann
+Grunt (Halo 3)
+Radon/Radagon
+Tyler Durden
+Isaac Clarke
+Joker (Persona 5)
+Bear
+David Martinez
+Perfect Shadow (Fortnite)
+Ryan Reynolds
+Pedro Pascal
+Carl Grimes (Walking Dead)
+Bulbasur (Pokemon)
+John Lennon
 end
